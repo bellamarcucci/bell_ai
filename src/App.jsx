@@ -1,5 +1,7 @@
-import ChatApp from "./chat-app";
+import ChatApp from "./ChatApp";
 
-export default function App() {
+function App() {
   return <ChatApp />;
 }
+
+export default App;
