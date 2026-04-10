@@ -132,10 +132,10 @@ const INITIAL_CHATS = [
 ];
 
 const SUGGESTED_PROMPTS = [
-  { label: "Review my e-commerce experience", sub: "and tell me if I'm a good fit" },
-  { label: "What results have I achieved?", sub: "in previous roles" },
-  { label: "How do I improve conversions?", sub: "on an e-commerce website" },
-  { label: "Evaluate my technical skills", sub: "as a web developer" },
+  { label: "Review your e-commerce experience", sub: "and tell me more about it" },
+  { label: "What results have you achieved?", sub: "in your previous roles" },
+  { label: "Can you walk me through your experience in e-commerce", sub: "and web development?" },
+  { label: "Tell me more about your", sub: "projects" },
 ];
 
 // ─── Theme helper ─────────────────────────────────────────────────────────────
