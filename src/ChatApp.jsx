@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import logo from "./assets/logo.png";
-import mePhoto from "./assets/me.png";
+import logoDark from "./assets/logo-dark.png";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
@@ -68,74 +68,75 @@ const GitHubIcon = () => (
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const HIRE_ME_CHAT = {
-  id: "hire-me",
-  title: "Hire me!",
-  messages: [
-    {
-      role: "user",
-      content: "I'd love to get in touch. How can I contact you?",
-    },
-    {
-      role: "assistant",
-      content: "HIRE_ME_CONTACTS",
-    },
-  ],
-};
+// const HIRE_ME_CHAT = {
+//   id: "hire-me",
+//   title: "Hire me!",
+//   messages: [
+//     {
+//       role: "user",
+//       content: "I'd love to get in touch. How can I contact you?",
+//     },
+//     {
+//       role: "assistant",
+//       content: "HIRE_ME_CONTACTS",
+//     },
+//   ],
+// };
 
 const INITIAL_CHATS = [
   {
     id: 1,
-    title: "E-commerce & Web Development Experience",
-    messages: [
-      {
-        role: "user",
-        content: "Can you walk me through your experience in e-commerce and web development?",
-      },
-      {
-        role: "assistant",
-        content:
-          "Absolutely! I have over seven years of experience working at the intersection of e-commerce and web development. I started on the business side, managing digital operations and campaigns, and naturally evolved into a more technical role as I became deeply involved in website optimization and performance. At Oba Hortifruti, I led the migration to VTEX and worked end-to-end on the e-commerce operation, including UX improvements, front-end adjustments, and integration with internal systems. I also collaborated closely with developers to enhance site performance and user experience. Before that, at Kärcher Brazil, I contributed to UX/UI improvements and digital optimization projects. Over time, I built strong technical skills in HTML, CSS, JavaScript, React, PHP, and Python/Django, which allow me to bridge the gap between business needs and technical execution.",
-      },
-    ],
+    title: "New chat",
+    messages: [],
+    // messages: [
+    //   {
+    //     role: "user",
+    //     content: "Can you walk me through your experience in e-commerce and web development?",
+    //   },
+    //   {
+    //     role: "assistant",
+    //     content:
+    //       "Absolutely! I have over seven years of experience working at the intersection of e-commerce and web development. I started on the business side, managing digital operations and campaigns, and naturally evolved into a more technical role as I became deeply involved in website optimization and performance. At Oba Hortifruti, I led the migration to VTEX and worked end-to-end on the e-commerce operation, including UX improvements, front-end adjustments, and integration with internal systems. I also collaborated closely with developers to enhance site performance and user experience. Before that, at Kärcher Brazil, I contributed to UX/UI improvements and digital optimization projects. Over time, I built strong technical skills in HTML, CSS, JavaScript, React, PHP, and Python/Django, which allow me to bridge the gap between business needs and technical execution.",
+    //   },
+    // ],
   },
-  {
-    id: 2,
-    title: "Measurable Business Impact",
-    messages: [
-      {
-        role: "user",
-        content: "What measurable results have you achieved in your previous roles?",
-      },
-      {
-        role: "assistant",
-        content:
-          "In my most recent role, I focused heavily on data-driven optimization and performance improvement. By leveraging tools like GA4, GTM, and user behavior analysis (including heatmaps), I identified key friction points in the user journey and implemented targeted improvements. These efforts resulted in a 49% increase in revenue over a 12-month period. I also contributed to category growth campaigns that achieved around 30% uplift in specific product segments. Beyond revenue, I improved key metrics such as conversion rate, bounce rate, and average session duration by continuously testing and refining landing pages, product pages, and checkout flows.",
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: "Bridging Tech & Business",
-    messages: [
-      {
-        role: "user",
-        content: "How do you combine technical development with business goals in your projects?",
-      },
-      {
-        role: "assistant",
-        content:
-          "I always start by understanding the business objective — whether it's increasing conversion, improving retention, or boosting average order value. From there, I translate those goals into technical and UX solutions. For example, instead of just building a page, I focus on how layout, performance, and content hierarchy impact user behavior. I use data to guide decisions, prioritize changes based on impact, and validate results through testing. Because I have both technical and business experience, I can communicate effectively with stakeholders, designers, and developers, ensuring that every implementation aligns with measurable outcomes. My goal is always the same: build solutions that not only work technically, but also drive real business results.",
-      },
-    ],
-  },
+  // {
+  //   id: 2,
+  //   title: "Measurable Business Impact",
+  //   messages: [
+  //     {
+  //       role: "user",
+  //       content: "What measurable results have you achieved in your previous roles?",
+  //     },
+  //     {
+  //       role: "assistant",
+  //       content:
+  //         "In my most recent role, I focused heavily on data-driven optimization and performance improvement. By leveraging tools like GA4, GTM, and user behavior analysis (including heatmaps), I identified key friction points in the user journey and implemented targeted improvements. These efforts resulted in a 49% increase in revenue over a 12-month period. I also contributed to category growth campaigns that achieved around 30% uplift in specific product segments. Beyond revenue, I improved key metrics such as conversion rate, bounce rate, and average session duration by continuously testing and refining landing pages, product pages, and checkout flows.",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 3,
+  //   title: "Bridging Tech & Business",
+  //   messages: [
+  //     {
+  //       role: "user",
+  //       content: "How do you combine technical development with business goals in your projects?",
+  //     },
+  //     {
+  //       role: "assistant",
+  //       content:
+  //         "I always start by understanding the business objective — whether it's increasing conversion, improving retention, or boosting average order value. From there, I translate those goals into technical and UX solutions. For example, instead of just building a page, I focus on how layout, performance, and content hierarchy impact user behavior. I use data to guide decisions, prioritize changes based on impact, and validate results through testing. Because I have both technical and business experience, I can communicate effectively with stakeholders, designers, and developers, ensuring that every implementation aligns with measurable outcomes. My goal is always the same: build solutions that not only work technically, but also drive real business results.",
+  //     },
+  //   ],
+  // },
 ];
 
 const SUGGESTED_PROMPTS = [
-  { label: "Review your e-commerce experience", sub: "and tell me more about it" },
-  { label: "What results have you achieved?", sub: "in your previous roles" },
-  { label: "Can you walk me through your experience in e-commerce", sub: "and web development?" },
-  { label: "Tell me more about your", sub: "projects" },
+  { label: "Which products", sub: "drive the highest customer loyalty?" },
+  { label: "Top 5 SKUs", sub: "sold this month." },
+  { label: "Which campaigns", sub: "achieved the highest ROI?" },
+  { label: "Which channels", sub: "generate the highest revenue?" },
 ];
 
 // ─── Theme helper ─────────────────────────────────────────────────────────────
@@ -161,75 +162,75 @@ function getTheme(dark) {
 
 // ─── Contact content ──────────────────────────────────────────────────────────
 
-function ContactMessage({ t }) {
-  const contacts = [
-    {
-      icon: <EmailIcon />,
-      label: "Email",
-      value: "bellamarcucci@gmail.com",
-      href: "mailto:bellamarcucci@gmail.com",
-    },
-    {
-      icon: <LinkedInIcon />,
-      label: "LinkedIn",
-      value: "linkedin.com/in/isabellamarcucci",
-      href: "https://www.linkedin.com/in/isabellamarcucci",
-    },
-    {
-      icon: <GitHubIcon />,
-      label: "GitHub",
-      value: "github.com/bellamarcucci",
-      href: "https://github.com/bellamarcucci",
-    },
-  ];
+// function ContactMessage({ t }) {
+//   const contacts = [
+//     {
+//       icon: <EmailIcon />,
+//       label: "Email",
+//       value: "bellamarcucci@gmail.com",
+//       href: "mailto:bellamarcucci@gmail.com",
+//     },
+//     {
+//       icon: <LinkedInIcon />,
+//       label: "LinkedIn",
+//       value: "linkedin.com/in/isabellamarcucci",
+//       href: "https://www.linkedin.com/in/isabellamarcucci",
+//     },
+//     {
+//       icon: <GitHubIcon />,
+//       label: "GitHub",
+//       value: "github.com/bellamarcucci",
+//       href: "https://github.com/bellamarcucci",
+//     },
+//   ];
 
-  return (
-    <div style={{ color: t.text }} className="text-sm leading-relaxed pt-1">
-      <p className="mb-4">
-        Absolutely — here&apos;s how you can reach me. I&apos;d be happy to talk
-        about web development, e-commerce, UX, and digital growth opportunities.
-      </p>
+//   return (
+//     <div style={{ color: t.text }} className="text-sm leading-relaxed pt-1">
+//       <p className="mb-4">
+//         Absolutely — here&apos;s how you can reach me. I&apos;d be happy to talk
+//         about web development, e-commerce, UX, and digital growth opportunities.
+//       </p>
 
-      <div className="space-y-3">
-        {contacts.map((c) => (
-          <a
-            key={c.label}
-            href={c.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: t.text,
-              textDecoration: "none",
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-            }}
-            className="group"
-          >
-            <div
-              style={{ color: t.textMuted }}
-              className="flex items-center justify-center flex-shrink-0"
-            >
-              {c.icon}
-            </div>
+//       <div className="space-y-3">
+//         {contacts.map((c) => (
+//           <a
+//             key={c.label}
+//             href={c.href}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             style={{
+//               color: t.text,
+//               textDecoration: "none",
+//               display: "flex",
+//               alignItems: "center",
+//               gap: 12,
+//             }}
+//             className="group"
+//           >
+//             <div
+//               style={{ color: t.textMuted }}
+//               className="flex items-center justify-center flex-shrink-0"
+//             >
+//               {c.icon}
+//             </div>
 
-            <div>
-              <div
-                style={{ color: t.textMuted }}
-                className="text-[11px] font-semibold uppercase tracking-[0.06em] mb-0.5"
-              >
-                {c.label}
-              </div>
-              <div style={{ color: t.text }} className="text-sm group-hover:underline">
-                {c.value}
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-}
+//             <div>
+//               <div
+//                 style={{ color: t.textMuted }}
+//                 className="text-[11px] font-semibold uppercase tracking-[0.06em] mb-0.5"
+//               >
+//                 {c.label}
+//               </div>
+//               <div style={{ color: t.text }} className="text-sm group-hover:underline">
+//                 {c.value}
+//               </div>
+//             </div>
+//           </a>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
 
 // ─── Sidebar ──────────────────────────────────────────────────────────────────
 
@@ -244,7 +245,6 @@ function Sidebar({
   onToggleDark,
   onCloseMobile,
   onToggleSidebar,
-  onHireMe,
 }) {
   const hoverStyle = (e) => (e.currentTarget.style.background = t.hover);
   const clearStyle = (e) => (e.currentTarget.style.background = "transparent");
@@ -252,10 +252,10 @@ function Sidebar({
   return (
     <div style={{ background: t.sidebar, color: t.text }} className="flex flex-col h-full">
       <div className="flex items-center justify-between px-3 pt-4 pb-3">
-        <img src={logo} alt="Logo" className="h-8 w-auto object-contain" style={{ maxWidth: 120 }} />
+        <img src={dark ? logo : logoDark} alt="Logo" className="h-12 w-auto object-contain" style={{ maxWidth: 240 }} />
         <button
           onClick={mobile ? onCloseMobile : onToggleSidebar}
-          style={{ color: t.textMuted }}
+          style={{ color: t.textMuted, cursor: "pointer" }}
           className="p-2 rounded-lg transition-colors"
           onMouseEnter={hoverStyle}
           onMouseLeave={clearStyle}
@@ -291,7 +291,7 @@ function Sidebar({
 
               <button
                 onClick={(e) => onDeleteChat(chat.id, e)}
-                style={{ color: t.textMuted }}
+                style={{ color: t.textMuted, cursor: "pointer" }}
                 className="opacity-0 group-hover:opacity-100 p-1 rounded-md transition-all hover:text-red-400 flex-shrink-0"
               >
                 <TrashIcon />
@@ -302,20 +302,6 @@ function Sidebar({
       </div>
 
       <div style={{ borderTop: `1px solid ${t.border}` }} className="p-3 space-y-1">
-        <button
-          onClick={onHireMe}
-          style={{
-            background: activeChatId === "hire-me" ? t.active : "transparent",
-            color: t.text,
-            cursor: "pointer",
-          }}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors"
-          onMouseEnter={hoverStyle}
-          onMouseLeave={clearStyle}
-        >
-          <span style={{ fontSize: 16 }}>👋</span>
-          <span>Hire me!</span>
-        </button>
 
         <div className="flex items-center justify-between px-3 py-1.5">
           <span style={{ color: t.textMuted }} className="text-xs">
@@ -325,7 +311,7 @@ function Sidebar({
           <button
             onClick={onToggleDark}
             style={{ color: t.textMuted }}
-            className="p-1.5 rounded-lg transition-colors"
+            className="p-1.5 rounded-lg transition-colors cursor-pointer"
             onMouseEnter={hoverStyle}
             onMouseLeave={clearStyle}
           >
@@ -335,6 +321,30 @@ function Sidebar({
       </div>
     </div>
   );
+}
+
+// ─── Generate Title ───────────────────────────────────────────────────────────
+async function generateTitle(userMessage) {
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 20,
+        messages: [
+          {
+            role: "user",
+            content: `Generate a short chat title (max 5 words, no quotes) for this message: "${userMessage}"`,
+          },
+        ],
+      }),
+    });
+    const data = await response.json();
+    return data?.content?.[0]?.text?.trim() || userMessage.slice(0, 35);
+  } catch {
+    return userMessage.slice(0, 35);
+  }
 }
 
 // ─── Main App ─────────────────────────────────────────────────────────────────
@@ -350,15 +360,16 @@ export default function ChatApp() {
 
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
+  const [mobileComposerSpace, setMobileComposerSpace] = useState(0);
 
   const t = getTheme(dark);
-  const isHireMeChat = activeChatId === "hire-me";
 
-  const activeChat = isHireMeChat ? HIRE_ME_CHAT : chats.find((c) => c.id === activeChatId);
+  const activeChat = useMemo(() => chats.find((c) => c.id === activeChatId), [chats, activeChatId]);
+
   const messages = useMemo(() => activeChat?.messages ?? [], [activeChat]);
 
   useEffect(() => {
-    document.title = activeChat ? `${activeChat.title} — BELL.Ai` : "BELL.Ai";
+    document.title = activeChat ? `${activeChat.title} — Keep AI Simple` : "Keep AI Simple";
 
     let link = document.querySelector("link[rel~='icon']");
     if (!link) {
@@ -367,13 +378,12 @@ export default function ChatApp() {
       document.head.appendChild(link);
     }
     link.type = "image/png";
-    link.href = logo;
-  }, [activeChat]);
+    link.href = dark ? logo : logoDark;
+  }, [activeChat, dark]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
-
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
@@ -381,15 +391,22 @@ export default function ChatApp() {
     }
   }, [input]);
 
+  useEffect(() => {
+    const updateComposerSpace = () => {
+      const composerElement = document.querySelector('[style*="fixed bottom-0"]');
+      if (composerElement) {
+        setMobileComposerSpace(composerElement.offsetHeight);
+      }
+    };
+    updateComposerSpace();
+    window.addEventListener("resize", updateComposerSpace);
+    return () => window.removeEventListener("resize", updateComposerSpace);
+  }, []);
+
   const handleNewChat = () => {
     const newId = Date.now();
     setChats((prev) => [{ id: newId, title: "New chat", messages: [] }, ...prev]);
     setActiveChatId(newId);
-    setMobileSidebar(false);
-  };
-
-  const handleHireMe = () => {
-    setActiveChatId("hire-me");
     setMobileSidebar(false);
   };
 
@@ -406,13 +423,12 @@ export default function ChatApp() {
 
   const handleSend = async (textOverride) => {
     const content = (textOverride ?? input).trim();
-    if (!content || isHireMeChat) return;
 
     let chatId = activeChatId;
 
     if (!chatId) {
       chatId = Date.now();
-      const title = content.length > 35 ? `${content.slice(0, 35)}…` : content;
+      const title = "New chat";
       setChats((prev) => [{ id: chatId, title, messages: [] }, ...prev]);
       setActiveChatId(chatId);
     }
@@ -446,7 +462,7 @@ export default function ChatApp() {
         body: JSON.stringify({
           text: content,
           conversation_id: chatId.toString(),
-          agent_type: "BellAi",
+          agent_type: "Kis Agent",
         }),
       });
 
@@ -460,6 +476,13 @@ export default function ChatApp() {
             : c
         )
       );
+      const isFirstMessage = messages.length === 0;
+        if (isFirstMessage) {
+          const title = await generateTitle(content);
+          setChats((prev) =>
+            prev.map((c) => (c.id === chatId ? { ...c, title } : c))
+          );  
+        }
     } catch (error) {
       console.error("Error sending message:", error);
 
@@ -495,7 +518,6 @@ export default function ChatApp() {
     onToggleDark: () => setDark((d) => !d),
     onCloseMobile: () => setMobileSidebar(false),
     onToggleSidebar: () => setSidebarOpen(false),
-    onHireMe: handleHireMe,
   };
 
   const hov = (e) => {
@@ -505,8 +527,6 @@ export default function ChatApp() {
   const clr = (e) => {
     e.currentTarget.style.background = "transparent";
   };
-
-  const mobileComposerSpace = isHireMeChat ? 24 : 118;
 
   return (
     <div
@@ -563,13 +583,13 @@ export default function ChatApp() {
               </button>
             )}
 
-            <img src={logo} alt="Logo" className="h-7 w-auto object-contain" style={{ maxWidth: 100 }} />
+            <img src={dark ? logo : logoDark} alt="Logo" className="h-12 w-auto object-contain" style={{ maxWidth: 200 }} />
           </div>
 
           <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <button
               onClick={() => setDark((d) => !d)}
-              style={{ color: t.textMuted }}
+              style={{ color: t.textMuted, cursor: "pointer" }}
               className="p-2 rounded-lg transition-colors"
               onMouseEnter={hov}
               onMouseLeave={clr}
@@ -598,9 +618,9 @@ export default function ChatApp() {
         >
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center min-h-full px-4 py-8 md:py-10">
-              <img src={logo} alt="Logo" className="h-14 md:h-16 w-auto object-contain mb-5 md:mb-6" style={{ maxWidth: 160 }} />
+              <img src={dark ? logo : logoDark } alt="Logo" className="h-14 md:h-30 w-auto object-contain mb-5 md:mb-6" style={{ maxWidth: 320 }} />
               <h1 style={{ color: t.text }} className="text-xl md:text-2xl font-bold mb-1 text-center">
-                What would you like to know about me?
+                How can I assist you today?
               </h1>
               <p style={{ color: t.textMuted }} className="text-sm mb-6 md:mb-8 text-center">
                 Start a conversation or choose a suggestion below
@@ -640,12 +660,6 @@ export default function ChatApp() {
                   key={i}
                   className={`flex gap-2.5 sm:gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  {msg.role === "assistant" && (
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex-shrink-0 mt-0.5 overflow-hidden shadow-md">
-                      <img src={mePhoto} alt="Isabella" className="w-full h-full object-cover" />
-                    </div>
-                  )}
-
                   <div className="max-w-[88%] sm:max-w-[75%]">
                     {msg.role === "user" ? (
                       <div
@@ -654,8 +668,6 @@ export default function ChatApp() {
                       >
                         {msg.content}
                       </div>
-                    ) : msg.content === "HIRE_ME_CONTACTS" ? (
-                      <ContactMessage t={t} />
                     ) : (
                       <div style={{ color: t.text }} className="text-sm leading-relaxed pt-1 break-words">
                         {msg.content}
@@ -667,10 +679,6 @@ export default function ChatApp() {
 
               {isTyping && (
                 <div className="flex gap-2.5 sm:gap-3 justify-start">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex-shrink-0 mt-0.5 overflow-hidden shadow-md">
-                    <img src={mePhoto} alt="Isabella" className="w-full h-full object-cover" />
-                  </div>
-
                   <div
                     style={{ background: t.bubbleUser }}
                     className="px-4 py-3.5 rounded-2xl rounded-tl-sm flex items-center gap-1.5"
@@ -691,14 +699,13 @@ export default function ChatApp() {
           )}
         </div>
 
-        {!isHireMeChat && (
-          <div
-            className="md:relative md:px-4 md:pb-5 md:pt-2 flex-shrink-0 fixed bottom-0 left-0 right-0 z-30 md:z-auto"
-            style={{
-              background: t.bg,
-              paddingBottom: "max(12px, env(safe-area-inset-bottom))",
-            }}
-          >
+        <div
+          className="md:relative md:px-4 md:pb-5 md:pt-2 flex-shrink-0 fixed bottom-0 left-0 right-0 z-30 md:z-auto"
+          style={{
+            background: t.bg,
+            paddingBottom: "max(12px, env(safe-area-inset-bottom))",
+          }}
+        >
             <div className="max-w-3xl mx-auto px-3 md:px-0">
               <div
                 style={{
@@ -713,7 +720,7 @@ export default function ChatApp() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Ask me about my professional experience, skills, and results!"
+                  placeholder="Ask me about products, sales performance or anything else!"
                   rows={1}
                   style={{
                     background: "transparent",
@@ -722,7 +729,7 @@ export default function ChatApp() {
                     resize: "none",
                     maxHeight: 200,
                   }}
-                  className="flex-1 outline-none text-sm leading-relaxed placeholder:opacity-40 min-h-[24px]"
+                  className="chat-input flex-1 outline-none text-sm leading-relaxed min-h-[24px]"
                 />
 
                 <button
@@ -745,10 +752,9 @@ export default function ChatApp() {
                   <SendIcon />
                 </button>
               </div>
+              </div>
             </div>
-          </div>
-        )}
+        </div>
       </div>
-    </div>
   );
 }
